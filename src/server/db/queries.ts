@@ -33,8 +33,9 @@ export async function createFile(Input : {fileData: {
   name: string;
   size: number;
   url: string;
+  parent: number;
 };
   userId: string
 }) {
-  return await db.insert(filesSchema).values({...Input.fileData, parent: 1})
+  return await db.insert(filesSchema).values({...Input.fileData, parent: Input.fileData.parent})
 }

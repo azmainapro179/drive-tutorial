@@ -42,7 +42,7 @@ export const ourFileRouter = {
             name: file.name,
             size: file.size,
             url: file.url, // Changed from file.ufsUrl to file.url
-            //parent: 1, // Changed from 0 to 1 (assuming root folder)
+            parent: 1, // Changed from 0 to 1 (assuming root folder)
           },
           userId: metadata.userId,
         });
