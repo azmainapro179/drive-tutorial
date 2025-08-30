@@ -5,6 +5,7 @@ import { files_table as filesSchema, folders_table as foldersSchema } from "~/se
 import { eq } from "drizzle-orm"
 
 
+
 export async function getAllParents(folderId: number) {
   const parents = []
   let currentFolderId: number | null = folderId
@@ -28,4 +29,12 @@ export function getFiles(folderId: number){
 }
 
 
-
+export async function createFile(Input : {fileData: {
+  name: string;
+  size: number;
+  url: string;
+};
+  userId: string
+}) {
+  return await db.insert(filesSchema).values({...Input.fileData, parent: 1})
+}

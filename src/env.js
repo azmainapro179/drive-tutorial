@@ -12,12 +12,15 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
 
-      SINGLESTORE_USER: z.string(),
-      SINGLESTORE_PASS: z.string(),
-      SINGLESTORE_HOST: z.string(),
-      SINGLESTORE_PORT: z.string(),
-      SINGLESTORE_DBNAME: z.string(),
+    SINGLESTORE_USER: z.string(),
+    SINGLESTORE_PASS: z.string(),
+    SINGLESTORE_HOST: z.string(),
+    SINGLESTORE_PORT: z.string(),
+    SINGLESTORE_DBNAME: z.string(),
 
+    CLERK_SECRET_KEY: z.string(),
+    UPLOADTHING_TOKEN: z.string().optional(),
+    UPLOADTHING_SECRET: z.string().optional(),
   },
 
   /**
@@ -26,7 +29,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
   },
 
   /**
@@ -41,7 +44,10 @@ export const env = createEnv({
     SINGLESTORE_HOST: process.env.SINGLESTORE_HOST,
     SINGLESTORE_PORT: process.env.SINGLESTORE_PORT,
     SINGLESTORE_DBNAME: process.env.SINGLESTORE_DBNAME,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    UPLOADTHING_TOKEN: process.env.UPLOADTHING_TOKEN,
+    UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

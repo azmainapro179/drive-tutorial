@@ -12,17 +12,16 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
+import { UploadButton } from "~/components/ui/uploadthing"
+import { useRouter } from "next/navigation"
 
 export default function DriveContents(props: {
   files: typeof files_table.$inferSelect[];
   folders: typeof folders_table.$inferSelect[];
   parents: typeof folders_table.$inferSelect[];
 }) {
-     
-  const handleUpload = () => {
-    alert("Upload functionality would be implemented here")
-  }
 
+  const navigate = useRouter()
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
       <div className="max-w-6xl mx-auto">
@@ -68,7 +67,16 @@ export default function DriveContents(props: {
             {props.folders.map((folder) => (
               <FolderRow key={folder.id} folder={folder} />
             ))}
+
           </ul>
+        </div>
+        <div className="mt-6">
+          <SignedIn>
+            <UploadButton
+              endpoint="imageUploader"
+              onClientUploadComplete={() => navigate.refresh()}
+            />
+          </SignedIn>
         </div>
       </div>
     </div>
